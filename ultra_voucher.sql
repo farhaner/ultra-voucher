@@ -1,8 +1,8 @@
 CREATE DATABASE ultra_voucher;
 
 ALTER TABLE parent_name
-    ADD id varchar PRIMARY KEY NULL 
-    ADD name varchar NULL
+    ADD id varchar PRIMARY KEY NULL,
+    ADD name varchar NULL;
 
 INSERT INTO parent_name
 (
@@ -21,7 +21,7 @@ VALUES
 )
 (
  4, Azka
-)
+);
 
 ALTER TABLE child_name
     ADD id varchar NULL 
@@ -39,6 +39,7 @@ VALUES
 )
 (
  4, Azka, 3
-)
+);
 
-SELECT * FROM 
+SELECT cn.id, cn.name, pn.name AS parent_name FROM child_name AS cn
+LEFT JOIN parent_name AS pn ON (pn.id = cn.parent_id);
